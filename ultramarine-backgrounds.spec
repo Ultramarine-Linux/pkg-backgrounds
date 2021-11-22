@@ -41,7 +41,7 @@ License:        CC0
 The desktop-backgrounds-gnome package sets default background in GNOME-based desktops
 
 %prep
-%autosetup -n backgrounds-main
+%autosetup -n backgrounds-%{version}
 
 
 %install
