@@ -2,7 +2,7 @@
 
 Name: ultramarine-backgrounds
 Version: %{fedora}
-Release: 2%{?dist}
+Release: 2.1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -48,19 +48,19 @@ The desktop-backgrounds-gnome package sets default background in GNOME-based des
 rm -rf $RPM_BUILD_ROOT
 %make_install
 
-pushd %{buildroot}%{_datadir}/backgrounds
+#pushd %{buildroot}%{_datadir}/backgrounds
 
-mkdir -p %{buildroot}%{_datadir}/backgrounds/
-ln -s ultramarine-linux/default %{buildroot}%{_datadir}/backgrounds/
-ln -s default/default.jpg %{buildroot}%{_datadir}/backgrounds/default.png
+#mkdir -p %{buildroot}%{_datadir}/backgrounds/
+#ln -s ultramarine-linux/default %{buildroot}%{_datadir}/backgrounds/
+#ln -s default/default.jpg %{buildroot}%{_datadir}/backgrounds/default.png
 
 %files
 %license COPYING
 
 %files basic
 %{_datadir}/backgrounds/ultramarine-linux/
-%{_datadir}/backgrounds/default
-%{_datadir}/backgrounds/default.png
+#%%{_datadir}/backgrounds/default
+#%%{_datadir}/backgrounds/default.png
 
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers.xml
