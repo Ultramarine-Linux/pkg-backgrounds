@@ -1,37 +1,35 @@
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: %{fedora}
-Release: 2.1%{?dist}
+Version: 35
+Release: 2.2%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
 Summary: Ultramarine Linux backgrounds
-Provides: desktop-backgrounds
+Provides: desktop-backgrounds = %{version}-%{release}
 BuildRequires: make
 # licensing information
 Source0: https://gitlab.ultramarine-linux.org/design/backgrounds/-/archive/%{version}/backgrounds-%{version}.tar.gz
-
+Source1: 20_default_backgrounds.gschema.override
 # CC0 artworks
 
 
 %description
 This package contains desktop backgrounds for the Ultramarine Linux default theme.
 
-%package    basic
-Summary:    Ultramarine Linux backgrounds
-Provides:   ultramarine-backgrounds = %{version}-%{release}
-Obsoletes:   ultramarine-backgrounds < %{version}-%{release}
+%package    common
+Summary:    Ultramarine Linux backgrounds: common files
+Provides:   ultramarine-backgrounds-common = %{version}-%{release}
+Provides:   ultramarine-backgrounds-basic = %{version}-%{release}
 
-%description    basic
-The desktop-backgrounds-basic package contains artwork intended to be used as
-desktop background image.
-
-
+Obsoletes:   ultramarine-backgrounds-common < %{version}-%{release}
+%description    common
+The actual desktop background files for Ultramarine Linux.
 
 %package        gnome
 Summary:        The default Fedora wallpaper from GNOME desktop
-Requires:       ultramarine-backgrounds-basic
+Requires:   ultramarine-backgrounds-common = %{version}-%{release}
 # starting with this release, gnome uses picture-uri instead of picture-filename
 # see gnome bz #633983
 Requires:       gsettings-desktop-schemas >= 2.91.92
@@ -54,12 +52,15 @@ rm -rf $RPM_BUILD_ROOT
 #mkdir -p %{buildroot}%{_datadir}/backgrounds/
 #ln -s ultramarine-linux/default %{buildroot}%{_datadir}/backgrounds/
 #ln -s default/default.jpg %{buildroot}%{_datadir}/backgrounds/default.png
+mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
+cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
 
 %files
 %license COPYING
 
-%files basic
+%files common
 %{_datadir}/backgrounds/ultramarine-linux/
+%{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
 #%%{_datadir}/backgrounds/default
 #%%{_datadir}/backgrounds/default.png
 
