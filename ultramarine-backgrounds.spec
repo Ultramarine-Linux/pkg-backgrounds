@@ -1,8 +1,8 @@
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: 35
-Release: 2.2%{?dist}
+Version: 36
+Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -10,7 +10,7 @@ Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
 BuildRequires: make
 # licensing information
-Source0: https://gitlab.ultramarine-linux.org/design/backgrounds/-/archive/%{version}/backgrounds-%{version}.tar.gz
+Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/heads/main.tar.gz
 Source1: 20_default_backgrounds.gschema.override
 # CC0 artworks
 
@@ -40,7 +40,7 @@ License:        CC0
 The desktop-backgrounds-gnome package sets default background in GNOME-based desktops
 
 %prep
-%autosetup -n backgrounds-%{version}
+%autosetup -n backgrounds-main
 
 
 %install
