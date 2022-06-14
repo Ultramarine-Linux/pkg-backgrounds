@@ -2,7 +2,7 @@
 
 Name: ultramarine-backgrounds
 Version: 36
-Release: 6%{?dist}
+Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
