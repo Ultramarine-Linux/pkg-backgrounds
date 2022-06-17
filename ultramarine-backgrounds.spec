@@ -2,7 +2,7 @@
 
 Name: ultramarine-backgrounds
 Version: 36
-Release: 2%{?dist}
+Release: 3%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -39,6 +39,15 @@ License:        CC0
 %description    gnome
 The desktop-backgrounds-gnome package sets default background in GNOME-based desktops
 
+%package        kde
+Summary:        The default KDE wallpaper from KDE desktop
+Requires:   ultramarine-backgrounds-common = %{version}-%{release}
+Provides:       system-backgrounds-kde = %{version}-%{release}
+License:        CC0
+
+%description    kde
+The desktop-backgrounds-kde package sets default background in the KDE Plasma desktop
+
 %prep
 %autosetup -n backgrounds-main
 
@@ -55,6 +64,16 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
 cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
 
+%post kde
+# symlink the default background to the KDE Plasma desktop
+ln -f %{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-dark.png %{_datadir}/wallpapers/"Ultramarine Dark"/contents/images/3840x2160.png
+ln -f %{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-dark.png %{_datadir}/wallpapers/"Ultramarine Dark"/contents/screenshot.png
+
+ln -f %{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-light.png %{_datadir}/wallpapers/"Ultramarine Light"/contents/images/3840x2160.png
+ln -f %{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-light.png %{_datadir}/wallpapers/"Ultramarine Light"/contents/screenshot.png
+
+
+
 %files
 %license COPYING
 
@@ -66,3 +85,6 @@ cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/20_default_backgrounds
 
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers.xml
+
+%files kde
+%{_datadir}/wallpapers/Ultramarine*
