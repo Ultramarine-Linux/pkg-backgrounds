@@ -2,12 +2,13 @@
 
 Name: ultramarine-backgrounds
 Version: 36
-Release: 3%{?dist}
+Release: 4%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
 Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
+Requires: ln
 BuildRequires: make
 # licensing information
 Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/heads/main.tar.gz
