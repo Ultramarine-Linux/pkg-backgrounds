@@ -8,7 +8,7 @@ BuildArch: noarch
 License: CC-BY-SA 4.0 and CC0
 Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
-Requires: ln
+Requires: /usr/bin/ln
 BuildRequires: make
 # licensing information
 Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/heads/main.tar.gz
